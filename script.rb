@@ -61,3 +61,44 @@ words.each do |word|
     print "#{word} "
   end
 end
+
+#Create a Histogram  ====================================================================
+puts "Type a phrase:"
+text = gets.chomp
+
+words = text.split
+puts words
+
+frequencies = Hash.new(0)
+
+words.each { |word|
+  frequencies[word]  += 1
+}
+
+frequencies = frequencies.sort_by { |word, count|
+  count
+}
+
+frequencies.reverse!
+
+frequencies.each { |key, value|
+  puts "#{key} #{value}"
+}
+
+#Ordering your library ==================================================================
+def alphabetize(arr, rev=false)
+  if rev
+    arr.sort! { |element_1, element_2|
+      element_2 <=> element_1
+    }
+  else
+    arr.sort! { |element_1, element_2|
+      element_1 <=> element_2
+    }
+  end
+  return arr
+end
+
+numbers_array = [33, 80, 133, 444, 17]
+
+print alphabetize(numbers_array)
