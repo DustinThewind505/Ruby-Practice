@@ -102,3 +102,68 @@ end
 numbers_array = [33, 80, 133, 444, 17]
 
 print alphabetize(numbers_array)
+
+#A night at the movies ==================================================================
+movies = Hash.new("Default Value")
+movies[:Armageddon] = 5
+
+puts "What would you like to do?:"
+choice = gets.chomp
+
+case choice
+  when "add"
+    puts "Enter the movie title:"
+    title = gets.chomp.to_sym
+
+    puts "Enter your rating:"
+    rating = gets.chomp
+
+    if !movies[title.to_sym].nil?
+      movies[title.to_sym] = rating.to_i
+    else
+      puts "This movie already exists."
+    end
+
+    print movies
+
+  when "update"
+    puts "Which movie would you like to update?:"
+    title = gets.chomp
+
+    if movies[title.to_sym].nil?
+      puts "Could not find movie"
+    else
+      puts "Enter new rating:"
+      new_rating = gets.chomp
+      movies[title.to_sym] = new_rating.to_i
+    end
+
+    print movies
+  when "display"
+    movies.each { |key, value|
+      puts "#{key}: #{value}"
+    }
+  when "delete"
+    puts "Which movie would you like to delete?:"
+    title = gets.chomp
+    if movies[title.to_sym].nil?
+      puts "Movie not found."
+    else
+      movies.delete(title.to_sym)
+    end
+
+    print movies
+  else
+    puts "Error!"
+end
+
+#Refactored 'if' and 'unless' statements ====================================================
+require 'prime'
+
+def first_number_primes(num)
+  return "must be an integer." unless num.is_a? Integer
+  return "number must be greater than 0." unless num > 0
+  Prime.first num
+end
+
+first_number_primes(10)
