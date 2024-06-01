@@ -167,3 +167,30 @@ def first_number_primes(num)
 end
 
 first_number_primes(10)
+
+#Proc practice ==============================================================================
+ages = [23, 101, 7, 104, 11, 94, 100, 121, 101, 70, 44]
+
+
+under_100 = Proc.new { |num| num < 100 }
+
+youngsters = ages.select(&under_100)
+
+puts youngsters
+
+#Lambda practice ============================================================================
+crew = {
+  captain: "Picard",
+  first_officer: "Riker",
+  lt_cdr: "Data",
+  lt: "Worf",
+  ensign: "Ro",
+  counselor: "Troi",
+  chief_engineer: "LaForge",
+  doctor: "Crusher"
+}
+
+first_half = lambda { |key, value| value[0] < "M" }
+
+a_to_m = crew.select(&first_half)
+print a_to_m 
